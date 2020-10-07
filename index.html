@@ -1,0 +1,50 @@
+<!DOCTYPE html>  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+    <title></title>  
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
+    <link rel="stylesheet" href="style.css">
+</head>  
+<body>  
+  
+    <div ng-app="mainApp" data-ng-controller="CRUDController">  
+  
+        <table id="employee" >  
+            <tr>  
+                <td><b>Employee Name:</b></td>  
+                <td>  
+                    <input type="text" data-ng-model="EmpModel.Name" /></td>  
+            </tr>
+            <tr> 
+                <td><b>Salary:</b></td>  
+                <td>  
+                    <input type="number" data-ng-model="EmpModel.Salary" /></td>  
+            </tr>  
+            <tr>  
+                <td>  
+                    <input type="button" value="Save Data" data-ng-click="AddData()" /></td>  
+                <td>  
+                    <input type="button" value="Update Data" data-ng-click="UpdateData()" /></td>  
+            </tr>  
+        </table>  
+  
+        <table id="customers">  
+            <thead>  
+                <th>Id</th>  
+                <th>Empolyee Name</th>  
+                <th>Salary</th>  
+                <th>Action</th>
+            </thead>  
+            <tr data-ng-repeat="Emp in EmpList" data-ng-click="BindSelectedData(Emp)">  
+                <td>{{ Emp.Id }}</td>  
+                <td>{{ Emp.Name }}</td>  
+                <td>{{ Emp.Salary | currency: "₹" }}</td>  
+                <td>  
+                    <input type="button" value="Delete" data-ng-click="DeleteData(Emp)" /></td>  
+            </tr>  
+        </table>  
+    </div>  
+    <script src="script.js"></script>  
+</body>  
+</html>  
